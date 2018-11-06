@@ -91,13 +91,30 @@
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, test) {
+    var result = []
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
-    return !_.filter(collection, test);
+    _.filter(collection, function(value){
+      if (!test(value)) {
+        result.push(value);
+      }
+    })
+    return result;
   };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array, isSorted, iterator) {
+    var result = [];
+    if (typeof isSorted === 'boolean') {
+      _.each(array, function(value, index){
+       if (isSorted) {
+         if (array[index] !== array[index + 1]) {
+           result.push(value);
+          }
+        }
+      })      
+      return result;
+    }
   };
 
 
