@@ -181,18 +181,9 @@
         accumulator = arr[0];
         arr.splice(0, 1);
       }
-    _.each(arr, function(value) {
-      accumulator = iterator(arr, arr[value]);
+    _.each(arr, function(value){
+      accumulator = iterator(accumulator, value);
     })
-    // _.each(collection, function(value) {
-    //   if (accumulator === undefined) {
-    //       accumulator = value;
-    //     } else if (iterator(accumulator, value) === undefined) {
-    //       accumulator = value;
-    //     } else {
-    //       accumulator = iterator(accumulator, value);
-    //     }
-    // })
     return accumulator;
   };
 
